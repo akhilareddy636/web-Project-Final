@@ -1,4 +1,4 @@
-import express from 'express';
+ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
@@ -22,14 +22,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// MongoDB connection
-const MONGO_URI = 'mongodb+srv://akhilaavuldapuram_db_user:26Qn5OcJNPQujluv@cluster0.ns5hb7y.mongodb.net/?appName=Cluster0';
+// MongoDB from Render Environment Variable
+const MONGO_URI = process.env.MONGODB_URI;
+
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
 .then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+.catch(err => console.log("MongoDB error:", err));
 
 // Schema & Model
 const weatherSchema = new mongoose.Schema({
@@ -43,7 +44,7 @@ const weatherSchema = new mongoose.Schema({
 const Weather = mongoose.model('Weather', weatherSchema);
 
 // API endpoint
-app.get('/api/', async (req, res) => {
+app.get('/api/weather', async (req, res) => {
   try {
     const data = await Weather.find();
     res.json({ weather: data });
@@ -52,6 +53,7 @@ app.get('/api/', async (req, res) => {
   }
 });
 
-// Start server
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+// PORT for Render
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
