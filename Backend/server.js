@@ -1,59 +1,71 @@
- import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import { MongoClient } from "mongodb";
 
 const app = express();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Needed for ES modules to get __dirname
+// Needed for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve portfolio from public folder
-app.use(express.static(path.join(__dirname, 'public')));
+// ======== MongoDB Setup =========
+const uri = "mongodb+srv://kanimozhvenkatesan:kanivenkat@cluster0.sclpbdu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const client = new MongoClient(uri);
 
-// Default route to portfolio homepage
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+async function connectDB() {
+    try {
+        await client.connect();
+        console.log("🌟 MongoDB Connected Successfully!");
+    } catch (err) {
+        console.error("❌ MongoDB connection error:", err);
+    }
+}
+connectDB();
+
+// ======== Middleware =========
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));  // serve images & assets
+
+// ======== Routes ==========
+
+// Serve index.html
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// MongoDB from Render Environment Variable
-const MONGO_URI = process.env.MONGODB_URI;
-
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log("MongoDB error:", err));
-
-// Schema & Model
-const weatherSchema = new mongoose.Schema({
-  id: Number,
-  location: String,
-  temperature: Number,
-  weatherCondition: String,
-  forecast: String
+// Serve about.html
+app.get("/about", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "about.html"));
 });
 
-const Weather = mongoose.model('Weather', weatherSchema);
-
-// API endpoint
-app.get('/api/weather', async (req, res) => {
-  try {
-    const data = await Weather.find();
-    res.json({ weather: data });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+// Serve db.json (static)
+app.get("/api", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "db.json"));
 });
 
-// PORT for Render
-const PORT = process.env.PORT || 5000;
+// Fetch data from MongoDB (Weather Collection)
+app.get("/api/weather", async (req, res) => {
+    try {
+        const cursor = client
+            .db("Weatherdashboard")
+            .collection("Weather")
+            .find({});
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+        const results = await cursor.toArray();
+        res.json(results);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error fetching weather data" });
+    }
+});
+
+// 404 Handler
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
+});
+
+// ======== Start Server =========
+app.listen(3200, () => {
+    console.log("🚀 Server started on http://localhost:3200");
+});
