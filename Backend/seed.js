@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import fs from 'fs';
 
-// Replace with your MongoDB connection string
+
 const MONGO_URI = 'mongodb+srv://akhilaavuldapuram_db_user:26Qn5OcJNPQujluv@cluster0.ns5hb7y.mongodb.net/?appName=Cluster0';
 
 mongoose.connect(MONGO_URI, {
@@ -11,7 +11,7 @@ mongoose.connect(MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
 
-// Define schema
+
 const weatherSchema = new mongoose.Schema({
   id: Number,
   location: String,
@@ -22,10 +22,10 @@ const weatherSchema = new mongoose.Schema({
 
 const Weather = mongoose.model('Weather', weatherSchema);
 
-// Read JSON data
+
 const data = JSON.parse(fs.readFileSync('weatherdata.json', 'utf-8'));
 
-// Insert into MongoDB
+
 const insertData = async () => {
   try {
     await Weather.deleteMany(); // clear old data
