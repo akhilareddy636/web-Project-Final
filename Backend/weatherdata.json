@@ -1,0 +1,39 @@
+{
+  "weather": [
+    {
+      "id": 1,
+      "location": "New Haven",
+      "temperature": 30,
+      "weatherCondition": "Cloudy",
+      "forecast": "Cloudy"
+    },
+    {
+      "id": 2,
+      "location": "New London",
+      "temperature": 25,
+      "weatherCondition": "Sunny",
+      "forecast": "Sunny"
+    },
+    {
+      "id": 3,
+      "location": "New Jersey",
+      "temperature": 15,
+      "weatherCondition": "Rainy",
+      "forecast": "Rainy"
+    },
+    {
+      "id": 4,
+      "location": "Boston",
+      "temperature": 35,
+      "weatherCondition": "Sunny",
+      "forecast": "Sunny"
+    },
+    {
+      "id": 5,
+      "location": "New York",
+      "temperature": 19,
+      "weatherCondition": "Rainy",
+      "forecast": "Rainy"
+    }
+  ]
+}

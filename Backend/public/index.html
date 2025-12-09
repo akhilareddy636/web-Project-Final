@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+	<meta name="Viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+		body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f6f3f3;
+    color: #2E3A59;
+}
+
+nav {
+    background: #0e2436; 
+    padding: 0;
+    text-align: center;
+    margin-bottom: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+nav ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 8px;
+}
+nav ul li a {
+    display: inline-block;
+    color: #F5F7FA;
+    background: transparent;
+    padding: 16px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 4px 4px 0 0;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color: #3D5A80;
+    color: #FFFFFF;
+    outline: none;
+}
+
+
+section {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    box-sizing: border-box;
+}
+
+#about      .container { background: #caeeec; }
+#education  .container { background: #dbe9f4; }
+#projects   .container { background: #f1f3d1; }
+#experience .container { background: #ede8f3; }
+#skills     .container { background: #dcefd6; }
+#blogs      .container { background:  #f5d7d7; }
+#contact    .container { background: #eacdb1; }
+
+h2, h3, strong {
+    color: #2E3A59;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.about-box {
+    overflow: hidden;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.avatar {
+    float: left;
+    width: 150px;
+    height: 200px;
+    margin-right: 28px;
+    border-radius: 50%;
+    border: 2px solid #3D5A80;
+    background: #DDE9F4;
+}
+
+.about-text {
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.projects-row {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.project-box {
+    float: left;
+    width: 30%;
+    margin-right: 3.33%;
+    margin-bottom: 24px;
+    background: #D8EBE4;
+    border-radius: 8px;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #2E3A59;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.project-box:last-child {
+    margin-right: 0;
+}
+
+.project-box img {
+    width: 100px;
+    margin-bottom: 14px;
+}
+
+.education-item {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.edu-left {
+  float: left;
+  font-weight: bold;
+  font-size: 1.1em;
+  max-width: 70%;
+}
+
+.edu-right {
+  float: right;
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #4A90E2;
+  max-width: 28%;
+  text-align: right;
+}
+
+.education-item p {
+  clear: both;
+  margin-top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1em;
+  color: #2E2E2E;
+}
+.exp-item {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.exp-left {
+  float: left;
+  font-weight: bold;
+  font-size: 1.1em;
+  max-width: 70%;
+}
+
+.exp-right {
+  float: right;
+  font-weight: 600;
+  font-size: 0.95em;
+  color: #4A90E2;
+  max-width: 28%;
+  text-align: right;
+}
+
+.exp-item p {
+  clear: both;
+  margin-top: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1em;
+  color: #2E2E2E;
+}
+
+.blog-box {
+    margin-bottom: 18px;
+    color: #2E3A59;
+    font-size: 15px;
+}
+
+.contact-box {
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.social-icon {
+    width: 48px;
+    margin: 12px 12px 0 0;
+    vertical-align: middle;
+    filter: none;
+}
+</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">ABOUT ME</a></li>
+            <li><a href="#education">EDUCATION</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
+            <li><a href="#skills">TECHNICAL SKILLS</a></li>
+            <li><a href="#blogs">BLOGS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container about-box">
+            <img src="./image/profile.jpg" alt="Profile" class="avatar" />
+            <div class="about-text">
+                <h2>ABOUT ME</h2>
+                <p style="text-align: justify;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+  <div class="container">
+    <h2>EDUCATION</h2>
+    <div class="education-item">
+      <div class="edu-left">
+        <strong>University of New Haven, Connecticut, USA</strong>
+      </div>
+      <div class="edu-right">
+        <span>Jan 2024 - Present</span>
+      </div>
+      <p>Masters in Computer Science</p>
+    </div>
+    <div class="education-item">
+      <div class="edu-left">
+        <strong>Malla Reddy Engineering College for Women</strong>
+      </div>
+      <div class="edu-right">
+        <span>Aug 2019 - Apr 2023</span>
+      </div>
+      <p>Bachelors in Computer Science and Engineering, Hyderabad, India</p>
+    </div>
+  </div>
+</section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>PROJECTS</h2>
+            <div class="projects-row">
+                <div class="project-box">
+                    <img src="./image/project image.jpg" alt="Project Icon" />
+                    <h3>AI in Robotics</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="project-box">
+                    <img src="./image/project image.jpg" alt="Project Icon" />
+                    <h3>Web Development</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="project-box">
+                    <img src="./image/project image.jpg" alt="Project Icon" />
+                    <h3>Quantum Computing</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="experience">
+  <div class="container">
+    <h2>EXPERIENCE</h2>
+    <div class="exp-item">
+      <div class="exp-left">
+        <strong>Company 1</strong>
+      </div>
+      <div class="exp-right">
+        <span>JUN 2022 - JUL 2023</span>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-left">
+        <strong>Company 2</strong>
+      </div>
+      <div class="exp-right">
+        <span>JAN 2022 - MAY 2022</span>
+      </div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+</section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>TECHNICAL SKILLS</h2>
+            <p><strong>Programming Languages:</strong> C, C++, Java, Python</p>
+            <p><strong>Database:</strong> MySQL</p>
+            <p><strong>Web Technologies:</strong> HTML, CSS, JavaScript</p>
+        </div>
+    </section>
+
+    <section id="blogs">
+        <div class="container">
+            <h2>BLOGS</h2>
+            <div class="blog-box">
+                <h3>BLOG 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="blog-box">
+                <h3>BLOG 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+    <div class="container contact-box">
+        <h2>CONTACT</h2>
+        <a href="https://www.linkedin.com" target="_blank">
+            <img src="./image/linkedin icon.png" alt="LinkedIn" class="social-icon" />
+        </a>
+        <a href="https://www.twitter.com" target="_blank">
+            <img src="./image/twitter icon.png" alt="Twitter" class="social-icon" />
+        </a>
+    </div>
+</section>
+</body>
+</html>
