@@ -10,14 +10,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Needed for ES modules to get __dirname
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve portfolio from public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Default route to portfolio homepage
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -31,7 +30,7 @@ mongoose.connect(MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log(err));
 
-// Schema & Model
+
 const weatherSchema = new mongoose.Schema({
   id: Number,
   location: String,
@@ -42,7 +41,7 @@ const weatherSchema = new mongoose.Schema({
 
 const Weather = mongoose.model('Weather', weatherSchema);
 
-// API endpoint
+
 app.get('/api/', async (req, res) => {
   try {
     const data = await Weather.find();
