@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ======== MongoDB Setup =========
-const uri = "mongodb+srv://kanimozhvenkatesan:kanivenkat@cluster0.sclpbdu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://user:password@cluster.mongodb.net/weatherDB?retryWrites=true&w=majority&appName=Cluster0";
 const client = new MongoClient(uri);
 
 async function connectDB() {
