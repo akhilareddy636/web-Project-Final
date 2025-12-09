@@ -24,17 +24,13 @@ app.get("/", (req, res) => {
 // ====== MongoDB ======
 const MONGO_URI = process.env.MONGO_URI;
 
-if (!MONGO_URI) {
-  console.error("❌ MONGO_URI is missing! Add it in Render Environment Variables");
-}
-
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // Schema
 const weatherSchema = new mongoose.Schema({
@@ -57,8 +53,8 @@ app.get("/api", async (req, res) => {
   }
 });
 
-// ====== PORT (REQUIRED FOR RENDER) ======
+// ====== PORT for Render ======
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
-  console.log(`🚀 Server running on Render port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 );
