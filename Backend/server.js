@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Needed for ES modules to get __dirname
+// Needed for ES modules (__dirname)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -22,16 +22,18 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const mongoose = require("mongoose");
+// ==== FIXED: No duplicate mongoose import ====
+// Use environment variable from Render
+const MONGO_URI = process.env.MONGO_URI;
 
-const MONGO_URI = process.env.MONGO_URI;  // Render env variable
-
+// MongoDB connection (correct for ESM)
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error("MongoDB connection error:", err));
+
 // Schema & Model
 const weatherSchema = new mongoose.Schema({
   id: Number,
@@ -53,6 +55,6 @@ app.get('/api/', async (req, res) => {
   }
 });
 
-// Start server
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+// Start server (Render uses process.env.PORT)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
